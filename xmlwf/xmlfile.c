@@ -87,7 +87,7 @@ processFile(const void *data, size_t size,
     *retPtr = 1;
 }
 
-#if (defined(WIN32) || defined(__WATCOMC__))
+#if (defined(WIN32) || defined(__WATCOMC__) || defined(__OS2__))
 
 static int
 isAsciiLetter(XML_Char c)
@@ -105,7 +105,7 @@ resolveSystemId(const XML_Char *base, const XML_Char *systemId,
   *toFree = 0;
   if (!base
       || *systemId == T('/')
-#if (defined(WIN32) || defined(__WATCOMC__))
+#if (defined(WIN32) || defined(__WATCOMC__) || defined(__OS2__))
       || *systemId == T('\\')
       || (isAsciiLetter(systemId[0]) && systemId[1] == T(':'))
 #endif
@@ -119,7 +119,7 @@ resolveSystemId(const XML_Char *base, const XML_Char *systemId,
   s = *toFree;
   if (tcsrchr(s, T('/')))
     s = tcsrchr(s, T('/')) + 1;
-#if (defined(WIN32) || defined(__WATCOMC__))
+#if (defined(WIN32) || defined(__WATCOMC__) || defined(__OS2__))
   if (tcsrchr(s, T('\\')))
     s = tcsrchr(s, T('\\')) + 1;
 #endif
