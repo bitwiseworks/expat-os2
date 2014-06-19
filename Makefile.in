@@ -79,7 +79,7 @@ check: tests/runtests tests/runtestspp
 
 install: xmlwf/xmlwf@EXEEXT@ installlib
 	$(mkinstalldirs) $(DESTDIR)$(bindir) $(DESTDIR)$(man1dir)
-	$(LIBTOOL) --mode=install $(INSTALL_PROGRAM) xmlwf/xmlwf@EXEEXT@ $(DESTDIR)$(bindir)/xmlwf
+	$(LIBTOOL) --mode=install $(INSTALL_PROGRAM) xmlwf/xmlwf@EXEEXT@ $(DESTDIR)$(bindir)/xmlwf@EXEEXT@
 	$(INSTALL_DATA) $(MANFILE) $(DESTDIR)$(man1dir)
 
 installlib: $(LIBRARY) $(APIHEADER) expat.pc
