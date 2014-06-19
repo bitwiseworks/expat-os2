@@ -17,7 +17,11 @@ if test "$1" = "2" -a "$2" -lt "58" || test "$1" -lt "2"; then
 fi
 
 echo "Creating configure ..."
-${AUTOCONF:-autoreconf} -fvi
+${AUTORECONF:-autoreconf} -fvi
+
+# autoreconf 2.69 doesn't pass --install to libtoolize, do it by hand
+echo "Installing auxiliary config files ..."
+${LIBTOOLIZE:-libtoolize} -c -i
 
 # toss this; it gets created by autoconf on some systems
 rm -rf autom4te*.cache
